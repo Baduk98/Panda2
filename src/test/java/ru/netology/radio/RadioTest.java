@@ -2,8 +2,6 @@ package ru.netology.radio;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 public class RadioTest {
 
@@ -17,8 +15,6 @@ public class RadioTest {
         int actual = wave.getWave();
 
         Assertions.assertEquals(expected, actual);
-
-
     }
 
     @Test
@@ -48,9 +44,10 @@ public class RadioTest {
     public void nextWaveTest() {
         Radio wave = new Radio();
 
-        wave.nextWave(2);
+        wave.setWave(9);
+        wave.nextWave();
 
-        int expected = 3;
+        int expected = 0;
         int actual = wave.getWave();
 
         Assertions.assertEquals(expected, actual);
@@ -60,9 +57,10 @@ public class RadioTest {
     public void nextWaveAboveLimitTest() {
         Radio wave = new Radio();
 
-        wave.nextWave(10);
+        wave.setWave(11);
+        wave.nextWave();
 
-        int expected = 0;
+        int expected = 1;
         int actual = wave.getWave();
 
         Assertions.assertEquals(expected, actual);
@@ -72,9 +70,10 @@ public class RadioTest {
     public void nextWaveUnderLimitTest() {
         Radio wave = new Radio();
 
-        wave.nextWave(-2);
+        wave.setWave(-1);
+        wave.nextWave();
 
-        int expected = 9;
+        int expected = 1;
         int actual = wave.getWave();
 
         Assertions.assertEquals(expected, actual);
@@ -84,7 +83,8 @@ public class RadioTest {
     public void prevWaveTest() {
         Radio wave = new Radio();
 
-        wave.prevWave(7);
+        wave.setWave(7);
+        wave.prevWave();
 
         int expected = 6;
         int actual = wave.getWave();
@@ -96,9 +96,10 @@ public class RadioTest {
     public void prevWaveAboveLimitTest() {
         Radio wave = new Radio();
 
-        wave.prevWave(11);
+        wave.setWave(10);
+        wave.prevWave();
 
-        int expected = 0;
+        int expected = 9;
         int actual = wave.getWave();
 
         Assertions.assertEquals(expected, actual);
@@ -108,7 +109,8 @@ public class RadioTest {
     public void prevWaveUnderLimitTest() {
         Radio wave = new Radio();
 
-        wave.prevWave(-1);
+        wave.setWave(-1);
+        wave.prevWave();
 
         int expected = 9;
         int actual = wave.getWave();
@@ -120,7 +122,8 @@ public class RadioTest {
     public void increaseVolumeTest() {
         Radio volume = new Radio();
 
-        volume.increaseVolume(50);
+        volume.setVolume(50);
+        volume.increaseVolume();
 
         int expected = 51;
         int actual = volume.getVolume();
@@ -132,7 +135,8 @@ public class RadioTest {
     public void increaseVolumeAboveLimitTest() {
         Radio volume = new Radio();
 
-        volume.increaseVolume(102);
+        volume.setVolume(102);
+        volume.increaseVolume();
 
         int expected = 100;
         int actual = volume.getVolume();
@@ -144,9 +148,10 @@ public class RadioTest {
     public void increaseVolumeUnderLimitTest() {
         Radio volume = new Radio();
 
-        volume.increaseVolume(-6);
+        volume.setVolume(-6);
+        volume.increaseVolume();
 
-        int expected = 0;
+        int expected = 1;
         int actual = volume.getVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -155,7 +160,8 @@ public class RadioTest {
     public void decreaseVolumeTest() {
         Radio volume = new Radio();
 
-        volume.decreaseVolume(37);
+        volume.setVolume(37);
+        volume.decreaseVolume();
 
         int expected = 36;
         int actual = volume.getVolume();
@@ -167,7 +173,8 @@ public class RadioTest {
     public void decreaseVolumeAboveLimitTest() {
         Radio volume = new Radio();
 
-        volume.decreaseVolume(123);
+        volume.setVolume(123);
+        volume.decreaseVolume();
 
         int expected = 100;
         int actual = volume.getVolume();
@@ -179,7 +186,8 @@ public class RadioTest {
     public void decreaseVolumeUnderLimitTest() {
         Radio volume = new Radio();
 
-        volume.decreaseVolume(-26);
+        volume.setVolume(-26);
+        volume.decreaseVolume();
 
         int expected = 0;
         int actual = volume.getVolume();

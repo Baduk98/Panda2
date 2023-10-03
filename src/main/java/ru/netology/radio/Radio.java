@@ -2,15 +2,15 @@ package ru.netology.radio;
 
 public class Radio {
 
-    public int currentVolume;
-    public int Wave;
+    private int volume;
+    private int waves;
 
 
     public int getWave() {
-        return Wave;
+        return waves;
     }
     public int getVolume() {
-        return currentVolume;
+        return volume;
     }
 
     public void setWave(int newWave) {
@@ -21,64 +21,62 @@ public class Radio {
         if (newWave > 9) {
             return;
         }
-
-
-        Wave = newWave;
+        waves = newWave;
     }
 
-    public void nextWave(int next) {
+    public void setVolume(int newVolume) {
+        if (newVolume < 0) {
+            newVolume = 0;
+        }
+        if (newVolume > 100) {
+            newVolume = 100;
+        }
+        volume = newVolume;
+    }
 
-        if (next < 9) {
-            next++;
+    public void nextWave() {
+
+        if (waves < 9) {
+            waves++;
         } else {
-            next = 0;
+            waves = 0;
         }
-        if (next < 0) {
-            next = 9;
+        if (waves < 0) {
+            waves = 9;
         }
-        Wave = next;
-
     }
 
 
-    public void prevWave(int prev) {
+    public void prevWave() {
 
-        if (prev < 0) {
-            prev = 9;
-        } else {
-            prev--;
+        if (waves < 9) {
+            waves--;
         }
-        if (prev > 9) {
-            prev = 0;
+
+        if (waves < 0) {
+            waves = 9;
         }
-        Wave = prev;
+
+        if (waves > 9) {
+            waves = 0;
+        }
     }
 
-    public void increaseVolume(int increase) {
+    public void increaseVolume() {
 
-        if (increase < 100) {
-            increase++;
-        } else {
-            increase = 100;
+        if (volume < 100) {
+            volume++;
         }
-        if (increase < 0) {
-            increase = 0;
-        }
-        currentVolume = increase;
     }
 
-    public void decreaseVolume(int decrease) {
+    public void decreaseVolume() {
 
-        if (decrease < 0) {
-            decrease = 0;
-        } else {
-            decrease--;
+        if (volume < 100) {
+            volume--;
         }
-        if (decrease > 100) {
-            decrease = 100;
+        if (volume < 0) {
+            volume = 0;
         }
-
-        currentVolume = decrease;
     }
 }
 
