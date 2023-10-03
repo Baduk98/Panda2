@@ -41,9 +41,6 @@ public class Radio {
         } else {
             waves = 0;
         }
-        if (waves < 0) {
-            waves = 9;
-        }
     }
 
 
@@ -55,10 +52,6 @@ public class Radio {
 
         if (waves < 0) {
             waves = 9;
-        }
-
-        if (waves > 9) {
-            waves = 0;
         }
     }
 

@@ -83,10 +83,23 @@ public class RadioTest {
     public void prevWaveTest() {
         Radio wave = new Radio();
 
-        wave.setWave(7);
+        wave.setWave(0);
         wave.prevWave();
 
-        int expected = 6;
+        int expected = 9;
+        int actual = wave.getWave();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void prevWaveAroundLimitTest() {
+        Radio wave = new Radio();
+
+        wave.setWave(9);
+        wave.prevWave();
+
+        int expected = 9;
         int actual = wave.getWave();
 
         Assertions.assertEquals(expected, actual);
