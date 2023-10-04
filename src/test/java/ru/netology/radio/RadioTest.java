@@ -6,6 +6,22 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    public void CountWaveTest() {
+        Radio wave = new Radio(9);
+
+        Assertions.assertEquals(10, wave.getCountWave());
+    }
+
+    @Test
+    public void DefaultCountWaveTest() {
+        Radio wave = new Radio();
+
+        Assertions.assertEquals(10, wave.getCountWave());
+
+
+    }
+
+    @Test
     public void WaveTest() {
         Radio wave = new Radio();
 
@@ -28,6 +44,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
 
     public void waveUnderLimitTest() {
@@ -40,6 +57,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void nextWaveTest() {
         Radio wave = new Radio();
@@ -169,6 +187,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void decreaseVolumeTest() {
         Radio volume = new Radio();

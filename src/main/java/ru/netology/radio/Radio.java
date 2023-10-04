@@ -1,76 +1,92 @@
 package ru.netology.radio;
 
 public class Radio {
-
+    private int minVolume = 0;
+    private int maxVolume = 100;
     private int volume;
+    private int minNumWave = 0;
+    private int maxNumWave = 9;
     private int waves;
+    private int countWave;
 
+    public Radio(int maxNumWave) {
+        this.countWave = maxNumWave + 1;
+    }
+
+    public Radio() {
+        this.countWave = 10;
+    }
+
+
+    public int getCountWave() {
+        return countWave;
+    }
 
     public int getWave() {
         return waves;
     }
+
     public int getVolume() {
         return volume;
     }
 
+
     public void setWave(int newWave) {
 
-        if (newWave < 0) {
+        if (newWave < minNumWave) {
             return;
         }
-        if (newWave > 9) {
+        if (newWave > maxNumWave) {
             return;
         }
         waves = newWave;
     }
 
     public void setVolume(int newVolume) {
-        if (newVolume < 0) {
-            newVolume = 0;
+        if (newVolume < minVolume) {
+            newVolume = minVolume;
         }
-        if (newVolume > 100) {
-            newVolume = 100;
+        if (newVolume > maxVolume) {
+            newVolume = maxVolume;
         }
         volume = newVolume;
     }
 
     public void nextWave() {
 
-        if (waves < 9) {
+        if (waves < maxNumWave) {
             waves++;
         } else {
-            waves = 0;
+            waves = minNumWave;
         }
     }
 
 
     public void prevWave() {
 
-        if (waves < 9) {
+        if (waves < maxNumWave) {
             waves--;
         }
 
-        if (waves < 0) {
-            waves = 9;
+        if (waves < minNumWave) {
+            waves = maxNumWave;
         }
     }
 
     public void increaseVolume() {
 
-        if (volume < 100) {
+        if (volume < maxVolume) {
             volume++;
         }
     }
 
     public void decreaseVolume() {
 
-        if (volume < 100) {
+        if (volume < maxVolume) {
             volume--;
         }
-        if (volume < 0) {
-            volume = 0;
+        if (volume < minVolume) {
+            volume = minVolume;
         }
     }
 }
-
-
